@@ -27,8 +27,10 @@ export class UserController {
 
   @Post('login')
   login(@Body() loginUserDto: LoginUserDto) {
-    try{
-      return this.userService.login(loginUserDto)
+    try {
+      return this.userService.login(loginUserDto);
+    } catch (err) {
+      throw new err({ message: 'user not found' });
     }
   }
 
